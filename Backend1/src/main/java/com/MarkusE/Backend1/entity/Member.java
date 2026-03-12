@@ -20,7 +20,8 @@ public class Member {
     @Column(name = "lastName", length = 35, nullable = false)
     private String lastName;
 
-    @Column(name = "address", length = 50, nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "addressId", nullable = false)
     private Address address;
 
     @Column(name = "email", length = 50, nullable = false)
