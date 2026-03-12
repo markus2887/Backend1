@@ -21,7 +21,7 @@ public class Member {
     private String lastName;
 
     @Column(name = "address", length = 50, nullable = false)
-    private String address;
+    private Address address;
 
     @Column(name = "email", length = 50, nullable = false)
     private String email;
