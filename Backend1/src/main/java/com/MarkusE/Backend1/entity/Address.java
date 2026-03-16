@@ -1,6 +1,9 @@
 package com.MarkusE.Backend1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "addresses")
@@ -18,6 +21,10 @@ public class Address {
 
     @Column(name = "city", length = 15, nullable = false)
     private String city;
+
+    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    private List<Member> members;
 
     protected Address() {}
 
