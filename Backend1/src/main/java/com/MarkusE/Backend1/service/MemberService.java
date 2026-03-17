@@ -34,6 +34,12 @@ public class MemberService {
     }
 
     public Member saveMember(Member member) {
+        Long addressId = member.getAddress().getId();
+
+        Address address = addressRepository.findById(addressId)
+                .orElseThrow(() -> new RuntimeException("Address not found"));
+
+        member.setAddress(address);
         return memberRepository.save(member);
     }
 
