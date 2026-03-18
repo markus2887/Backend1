@@ -1,5 +1,6 @@
 package com.MarkusE.Backend1.entity;
 
+import com.MarkusE.Backend1.security.AppUser;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -13,6 +14,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "firstName", length = 25, nullable = false)
@@ -34,6 +36,9 @@ public class Member {
 
     @Column(name = "dateOfBirth", length = 15, nullable = false, unique = true)
     private LocalDate dateOfBirth;
+
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    private AppUser appUser;
 
     protected Member() {}
 
